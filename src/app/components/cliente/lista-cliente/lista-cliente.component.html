@@ -1,0 +1,40 @@
+<div class="container">
+
+    <table class="table table-success table-striped">
+      <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Ver</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Borrar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let client of clients">
+            <td>{{client.idClient}}</td>
+            <td>{{client.name}}</td>
+            <td>{{client.age}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.password}}</td>
+            
+            
+            <td><button class="btn btn-outline-primary" routerLink="/client/detalle/{{client.idClient}} "><i class="far fa-eye"></i> Ver</button></td>
+            <td><button class="btn btn-outline-warning" routerLink="/client/update/{{client.idClient}}"><i class="fas fa-user-edit"></i> Editar</button></td>
+            <td> <button class="btn btn-outline-danger" (click)="delete(client.idClient)"  ><i class="far fa-trash-alt"></i> Eliminar</button></td>
+          </tr>
+         
+        </tbody>
+    </table>
+  
+    <div class="mt-3">
+      <button  class="btn btn-outline-success btn-lg" routerLink="/client/create" >
+        <i class="fas fa-user-plus"></i> Agregar Cliente
+  
+      </button>
+    </div>
+  </div>
+

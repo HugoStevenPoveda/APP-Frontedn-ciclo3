@@ -1,0 +1,59 @@
+<div class="container" *ngIf="reservation">
+    <div class="row mt-5">
+      <div class="col-md-4 mx-auto">
+        <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="startDate">StartDate</label>
+            <input
+              type="date"
+              class="form-control"
+              id="startDate"
+              name="startDate"
+              [(ngModel)]="reservation.startDate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="devolutionDate">DevolutionDate</label>
+            <input
+              type="date"
+              class="form-control"
+              id="devolutionDate"
+              name="devolutionDate"
+              [(ngModel)]="reservation.devolutionDate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="costume">Costume</label>
+            <input
+              type="text"
+              class="form-control"
+              id="costume"
+              name="costume"
+              [(ngModel)]="reservation.costume.id"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="client">Client</label>
+            <input
+              type="text"
+              class="form-control"
+              id="client"
+              name="client"
+              [(ngModel)]="reservation.client.idClient"
+              required
+            />
+          </div>
+  
+         
+          <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+            Actualizar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

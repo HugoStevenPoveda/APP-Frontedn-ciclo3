@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row mt-5" *ngIf="reservation">
+      <div class="col-md-4 mx-auto">
+          <div class="card" style="width: 18rem;">
+              <div class="card-header text-center">
+                Detalle
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>ID: </b>{{reservation.idReservation}}</li>
+                <li class="list-group-item"><b>StartDate: </b>{{reservation.startDate}}</li>
+                <li class="list-group-item"><b>DevolutionDate: </b>{{reservation.devolutionDate}}</li>
+                <li class="list-group-item"><b>Cliente: </b>{{reservation.client.name}}</li>
+                <li class="list-group-item"><b>Costume: </b>{{reservation.costume.name}}</li>
+              </ul>
+              <div class="card-footer">
+                  <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-undo-alt"></i>Volver</button>
+              </div>
+            </div>
+            
+      </div>
+  </div>
+  </div>
+

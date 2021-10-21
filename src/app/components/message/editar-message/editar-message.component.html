@@ -1,0 +1,49 @@
+<div class="container" *ngIf="message">
+    <div class="row mt-5">
+      <div class="col-md-4 mx-auto">
+        <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+            <div class="form-group">
+              <label for="messageText">Message</label>
+              <textarea
+                class="form-control"
+                rows="5"
+                id="messageText"
+                name="description"
+                [(ngModel)]="message.messageText"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="costume">Costume</label>
+              <input
+                type="text"
+                class="form-control"
+                id="costume"
+                name="costume"
+                [(ngModel)]="message.costume.id"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="category">Client</label>
+              <input
+                type="text"
+                class="form-control"
+                id="client"
+                name="client"
+                [(ngModel)]="message.client.idClient"
+                required
+              />
+            </div>
+
+        
+
+
+          <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+            Actualizar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
