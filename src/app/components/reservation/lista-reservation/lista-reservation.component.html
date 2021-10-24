@@ -8,7 +8,9 @@
             <th scope="col">DevolutionDate</th>
             <th scope="col">Status</th>
             <th scope="col">Costume</th>
-            <th scope="col">Client</th>
+            <th scope="col">Client ID</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Client Email</th>
             <th scope="col">Score</th>
             <th scope="col">Ver</th>
             <th scope="col">Editar</th>
@@ -23,7 +25,9 @@
             <td>{{ formatoFecha(reservation.devolutionDate)}}</td>
             <td>{{ reservation.status}}</td>
             <td>{{ reservation.costume.name}}</td>
+            <td>{{ reservation.client.idClient}}</td>
             <td>{{ reservation.client.name}}</td>
+            <td>{{ reservation.client.email}}</td>
             <td>{{ reservation.score }}</td>
             
             
@@ -37,7 +41,7 @@
   
     <div class="mt-3">
       <button  class="btn btn-outline-success btn-lg" routerLink="/reservation/create" >
-        <i class="fas fa-shopping-cart"></i> Agregar Costume
+        <i class="fas fa-shopping-cart"></i> Agregar Reserva
   
       </button>
     </div>

@@ -1,8 +1,24 @@
 # CostumeRentas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+Aplicación cliente para reto 4
 
-## Development server
+## **Modo de instalación**
+# ** **
+1. Se debe tener instalado `NodeJs `y `npm`.
+2. Abrir una terminal donde se encuentre el archivo `package.json`.
+3. Ejecutar la siguiente sentencia, la cual perimiría a npm, el gestor de paquetes para NodeJs, descargar las dependencias que utiliza esta aplicación. 
+```bash
+ npm install
+```  
+4. 
+
+**3.Database connection configuration MySQL**
++ open  ApiMascota/src/main/resources/application.properties
+
+
+  
+
+
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

@@ -34,7 +34,8 @@ export class EditarCostumeComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params.id;
     this.getElementForId(id);
     this.listCategorys();
-    
+    console.log("COSTUME INICIAL")
+      console.log(this.costume)
     
 
 
@@ -46,6 +47,8 @@ export class EditarCostumeComponent implements OnInit {
     this.costumeService.getById(id).subscribe(
       res=>{
          this.costume =res;
+         console.log("COSTUME TRAIDO")
+      console.log(this.costume)
         },
         err=>{
   
@@ -64,6 +67,8 @@ export class EditarCostumeComponent implements OnInit {
 
 
     public onUpdate():void{
+      console.log("COSTUME ENVIADO")
+      console.log(this.costume)
       this.costumeService.updateElement(this.costume).subscribe(
         data=>{
          
@@ -91,9 +96,11 @@ export class EditarCostumeComponent implements OnInit {
     public listCategorys():void{
       this.costumeService.listCategoryForId().subscribe(
         res=>{
+          console.log("RESPUESTA ARRAY")
+          console.log(res)
           let indice =0;
           for(let i in res){
-            this.listCategory[indice] = res[i].id;
+            this.listCategory[indice] = res[i].name;
             indice++;
           }
         },

@@ -3,7 +3,7 @@
     <table class="table table-success table-striped">
       <thead>
           <tr>
-            <th scope="col">Id</th>
+            
             <th scope="col">Nombre</th>
             <th scope="col">Brand</th>
             <th scope="col">Year</th>
@@ -16,12 +16,12 @@
         </thead>
         <tbody>
           <tr  *ngFor="let costume of costumes">
-            <td>{{costume.id}}</td>
+            
             <td>{{costume.name}}</td>
             <td>{{costume.brand}}</td>
             <td>{{costume.year}}</td>
             <td>{{costume.description}}</td>
-            <td>{{costume.category.id}}</td>
+            <td>{{costume.category.name}}</td>
             
             <td><button class="btn btn-outline-primary" routerLink="/costume/detalle/{{costume.id}} "><i class="far fa-eye"></i> Ver</button></td>
             <td><button class="btn btn-outline-warning" routerLink="/costume/update//{{costume.id}}"><i class="fas fa-user-edit"></i> Editar</button></td>

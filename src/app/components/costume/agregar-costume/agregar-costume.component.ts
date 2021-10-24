@@ -69,11 +69,15 @@ export class AgregarCostumeComponent implements OnInit {
     public listCategorys():void{
       this.costumeService.listCategoryForId().subscribe(
         res=>{
+          console.log("RESPUESTA ARRAY")
+          console.log(res)
           let indice =0;
           for(let i in res){
             this.listCategory[indice] = res[i].id;
             indice++;
           }
+          console.log("LISTACREADO ID")
+          console.log(this.listCategory)
         },
         err=>{
           console.log(err);

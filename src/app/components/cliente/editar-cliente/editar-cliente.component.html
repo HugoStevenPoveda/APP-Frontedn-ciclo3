@@ -6,6 +6,7 @@
             <label for="name">Nombre</label>
             <input
               type="text"
+              maxlength="250"
               class="form-control"
               id="name"
               name="name"
@@ -16,8 +17,11 @@
           <div class="form-group">
             <label for="age">Age</label>
             <input
-              type="number"
+              
+              type="text"
               min="0"
+              max="100"
+              maxlength="3"
               class="form-control"
               id="age"
               name="age"
@@ -29,6 +33,7 @@
             <label for="email">Email</label>
             <input
               type="email"
+              disabled="disabled"
               class="form-control"
               id="email"
               name="email"
@@ -43,6 +48,7 @@
             <label for="category">Password</label>
             <input
               type="text"
+              maxlength="45"
               class="form-control"
               id="password"
               name="password"

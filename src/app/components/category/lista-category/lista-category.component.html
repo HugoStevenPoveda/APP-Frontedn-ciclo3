@@ -3,7 +3,7 @@
     <table class="table table-success table-striped">
       <thead>
           <tr>
-            <th scope="col">Id</th>
+            
             <th scope="col">Nombre</th>
             <th scope="col">Description</th>
             <th scope="col">Ver</th>
@@ -13,7 +13,7 @@
         </thead>
         <tbody>
           <tr  *ngFor="let category of categories">
-            <td>{{category.id}}</td>
+            
             <td>{{category.name}}</td>
             <td>{{category.description}}</td>
             <td><button class="btn btn-outline-primary" routerLink="/category/detalle/{{category.id}} "><i class="far fa-eye"></i> Ver</button></td>
@@ -26,7 +26,7 @@
   
     <div class="mt-3">
       <button  class="btn btn-outline-success btn-lg" routerLink="/category/create" >
-        <i class="fas fa-list"></i> Agregar Producto
+        <i class="fas fa-list"></i> Agregar Categoria
   
       </button>
     </div>

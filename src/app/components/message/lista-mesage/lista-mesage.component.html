@@ -3,7 +3,7 @@
     <table class="table table-success table-striped">
       <thead>
           <tr>
-            <th scope="col">Id</th>
+            
             <th scope="col">Message</th>
             <th scope="col">Costume</th>
             <th scope="col">Client</th>
@@ -14,7 +14,7 @@
         </thead>
         <tbody>
           <tr  *ngFor="let message of messages">
-            <td>{{message.idMessage}}</td>
+            
             <td>{{message.messageText}}</td>
             <td>{{message.costume.name}}</td>
             <td>{{message.client.name}}</td>
