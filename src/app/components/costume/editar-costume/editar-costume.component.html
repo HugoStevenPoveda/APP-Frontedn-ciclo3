@@ -67,7 +67,7 @@
                 name="category"
                 required
               > 
-              <option selected>{{costume.category.name}}</option>
+              <option selected>{{costume.category.id}}</option>
                 <option
                   [value]="categoryId"
                   *ngFor="let categoryId of listCategory"
@@ -75,9 +75,7 @@
                   {{categoryId }}
                 </option>
               </select>
-              <h1>
-                {{costume.category.id }}
-              </h1>
+             
 
             </div>
           </div>

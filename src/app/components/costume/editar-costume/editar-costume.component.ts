@@ -100,7 +100,7 @@ export class EditarCostumeComponent implements OnInit {
           console.log(res)
           let indice =0;
           for(let i in res){
-            this.listCategory[indice] = res[i].name;
+            this.listCategory[indice] = res[i].id;
             indice++;
           }
         },
