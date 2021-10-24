@@ -47,6 +47,7 @@ import { BannerComponent } from './components/page-init/banner/banner.component'
 import { FooterComponent } from './components/page-init/footer/footer.component';
 import { CardCostumeComponent } from './components/page-init/card-costume/card-costume.component';
 import { CarruselComponent } from './components/page-init/carrusel/carrusel.component';
+import { FooterGeneralComponent } from './components/footer-general/footer-general.component';
 
 
 
@@ -87,7 +88,8 @@ import { CarruselComponent } from './components/page-init/carrusel/carrusel.comp
     BannerComponent,
     FooterComponent,
     CardCostumeComponent,
-    CarruselComponent
+    CarruselComponent,
+    FooterGeneralComponent
 
    
     

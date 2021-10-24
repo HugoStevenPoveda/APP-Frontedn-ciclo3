@@ -1,6 +1,7 @@
 footer{
     color:#E9E9E9 ;
     margin-top: 100px;
+    margin-bottom: 0px;
     background: rgb(36, 75, 79);
   background: linear-gradient(
     0deg,
@@ -12,7 +13,7 @@ footer{
   );
 }
 .animated{
-  animation-duration:10s;
+  animation-duration:4s;
   animation-fill-mode:both;
 }
 
