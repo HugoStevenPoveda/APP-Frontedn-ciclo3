@@ -17,6 +17,11 @@ export class AgregarReservationComponent implements OnInit {
   devolutionDate = "";
   costume = 0;
   client = 0;
+
+   //ARRAY FOR CLIENT
+   listClient:any[]=[];
+   //ARRAY FOR CLIENT
+   listCostume:any[]=[];
   
 
   constructor(
@@ -26,6 +31,8 @@ export class AgregarReservationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listIdCostumesId();
+    this.listIdClients();
   }
 
   public onCreate():void{
@@ -33,8 +40,8 @@ export class AgregarReservationComponent implements OnInit {
     const reservation:Reservation={
      "startDate":this.startDate,
      "devolutionDate":this.devolutionDate, 
-     "costume":{"id":this.costume},
-     "client":{"idClient":this.client}
+     "client":{"idClient":this.listClient[this.client]},
+     "costume":{"id":this.listCostume[this.costume]}
     
    }
    console.log("///////////////");
@@ -63,5 +70,35 @@ export class AgregarReservationComponent implements OnInit {
       )
 
     }
+
+
+    public listIdClients():void{
+      this.reservationService.listClientForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listClient[indice] = res[i].idClient;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
+    public listIdCostumesId():void{
+      this.reservationService.listCostumeForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listCostume[indice] = res[i].id;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
 
 }

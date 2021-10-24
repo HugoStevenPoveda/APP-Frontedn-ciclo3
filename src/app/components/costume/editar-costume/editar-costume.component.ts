@@ -17,10 +17,11 @@ export class EditarCostumeComponent implements OnInit {
     "brand":"",
     "year": 0,
     "description":"",
-    "category":{"id":0}
-
-
+    "category":{"id":1}
   };
+  listCategory:any[]=[];
+
+
 
   constructor(
     private costumeService:CostumeService,
@@ -32,29 +33,37 @@ export class EditarCostumeComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.getElementForId(id);
+    this.listCategorys();
+    
+    
+
+
+
   }
 
   
   public getElementForId(id:any):void{
     this.costumeService.getById(id).subscribe(
       res=>{
-        
-        this.costume =res;
-      },
-      err=>{
-
-        this.toastr.error('No se puede Editar','Fail',
-        {
-          timeOut:3000,positionClass:'toast-top-center'
-        });
-        this.router.navigate(['/costume']);
+         this.costume =res;
+        },
+        err=>{
+  
+          this.toastr.error('No se puede Editar','Fail',
+          {
+            timeOut:3000,positionClass:'toast-top-center'
+          });
+          this.router.navigate(['/costume']);
+        }
+        );
+  
       }
-      );
+        
 
-    }
+
+
 
     public onUpdate():void{
-     
       this.costumeService.updateElement(this.costume).subscribe(
         data=>{
          
@@ -77,10 +86,28 @@ export class EditarCostumeComponent implements OnInit {
 
       );
     
+    }
+
+    public listCategorys():void{
+      this.costumeService.listCategoryForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listCategory[indice] = res[i].id;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
+
+
+
         
 
 
-    }
 
 
 

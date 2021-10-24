@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {CostumeService } from 'src/app/services/costume.service';
-import { Costume} from 'src/app/models/costume';
-import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Costume } from 'src/app/models/costume';
+import { CostumeService } from 'src/app/services/costume.service';
 
 @Component({
   selector: 'app-agregar-costume',
@@ -18,6 +18,10 @@ export class AgregarCostumeComponent implements OnInit {
  year= 0;
  description="";
  category=0;
+
+ //ARRAY PARA ID CATEGORY
+ listCategory:any[]=[];
+
   
 
   constructor(
@@ -28,6 +32,7 @@ export class AgregarCostumeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listCategorys();
   }
 
   public onCreate():void{
@@ -37,9 +42,8 @@ export class AgregarCostumeComponent implements OnInit {
      "brand":this.brand,
      "year": this.year,
      "description":this.description,
-     "category":{"id":this.category}
-   }
-  
+     "category":{"id":this.listCategory[this.category]}
+   }  
     this.costumeService.createElement(costume).subscribe(
       res=>{
         this.toastr.success('Costume Creado', 'OK', {
@@ -61,5 +65,27 @@ export class AgregarCostumeComponent implements OnInit {
       )
 
     }
+
+    public listCategorys():void{
+      this.costumeService.listCategoryForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listCategory[indice] = res[i].id;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
+
+
+
+
+
+
+
 
 }

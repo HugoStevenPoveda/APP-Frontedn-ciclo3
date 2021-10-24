@@ -1,0 +1,55 @@
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.headerFondo{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    
+    font-size: 18px;
+    font-family: monospace;
+    color: #FBFCFC;
+    background: rgb(36, 75, 79);
+    background: linear-gradient(
+      0deg,
+      rgba(36, 75, 79, 1) 0%,
+      rgba(16, 30, 32, 1) 23%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(2, 6, 6, 1) 78%,
+      rgba(29, 97, 105, 1) 100%
+    );
+}
+
+.margenCard{
+    margin: 15px;
+    border: 1px solid  rgba(36, 75, 79, 1);
+}
+
+
+.card{
+   border-radius: 20px;
+   cursor:pointer;
+
+   outline:none;
+   background-color:#fff;
+   border-radius: 20px;
+   transition: transform .3s;
+
+}
+.card:hover{
+    transform: translateY(-15px);
+    transition: transform .3s;
+}
+.text1{
+    font-size:16px;
+    color:#cbcbcb;
+}
+
+.star{
+    color:#fbc02d;
+}
+
+
+

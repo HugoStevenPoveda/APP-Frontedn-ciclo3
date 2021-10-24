@@ -3,6 +3,8 @@ import{Reservation}from'src/app/models/reservation';
 import{ReservationService}from'src/app/services/reservation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
+moment.locale('es');
 
 @Component({
   selector: 'app-reservation',
@@ -17,10 +19,9 @@ export class ReservationComponent implements OnInit {
 
     "startDate":"",
     "devolutionDate":"",
-    "status":"Create",
     "costume":"",
     "client":"",
-    "score" :"",
+    
   }
 
 
@@ -41,8 +42,12 @@ export class ReservationComponent implements OnInit {
   public getElementForId(id:any):void{
     this.reservationService.getById(id).subscribe(
       res=>{
+        this.reservation.idReservation=res.idReservation;
+        this.reservation.startDate =this.formatoFecha(res.startDate);
+        this.reservation.devolutionDate =this.formatoFecha(res.devolutionDate);
+        this.reservation.client =res.client;
+        this.reservation.costume =res.costume;
         
-        this.reservation=res;
       },
       err=>{
 
@@ -59,6 +64,11 @@ export class ReservationComponent implements OnInit {
     public volver(): void {
       this.router.navigate(['/reservation']);
     }
+
+    public formatoFecha(fecha:any):any{
+      return moment(fecha).format("D MMMM YYYY");
+
+     }
 
 
 

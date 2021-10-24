@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import{Reservation}from'src/app/models/reservation';
-import { Costume } from 'src/app/models/costume';
+
 import{ReservationService}from'src/app/services/reservation.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Client } from 'src/app/models/client';
+
+import * as moment from 'moment';
+moment.locale('es');
+
 
 @Component({
   selector: 'app-editar-reservation',
@@ -15,12 +18,17 @@ export class EditarReservationComponent implements OnInit {
 
   //ATRIBUTOS
   reservation:Reservation={
-
-    "startDate":"",
+    "idReservation":0,
+    "startDate":this.formatoFecha(""),
     "devolutionDate":"",
-    "client":new Client(" ",0," ",""),
-    "costume":new Costume(" "," ",0," ",0)
+    "costume":{"id":1},
+    "client":{"idClient":1}
   }
+
+   //ARRAY FOR CLIENT
+   listClient:any[]=[];
+   //ARRAY FOR CLIENT
+   listCostume:any[]=[];
 
 
   constructor(
@@ -34,6 +42,8 @@ export class EditarReservationComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.getElementForId(id);
+    this.listIdCostumesId();
+    this.listIdClients();
    
     
   }
@@ -41,8 +51,11 @@ export class EditarReservationComponent implements OnInit {
   public getElementForId(id:any):void{
     this.reservationService.getById(id).subscribe(
       res=>{
-        
-        this.reservation =res;
+        this.reservation.idReservation=res.idReservation;
+        this.reservation.startDate =this.formatoFecha(res.startDate);
+        this.reservation.devolutionDate =this.formatoFecha(res.devolutionDate);
+        this.reservation.client =res.client;
+        this.reservation.costume =res.costume;
       },
       err=>{
 
@@ -53,8 +66,11 @@ export class EditarReservationComponent implements OnInit {
         this.router.navigate(['/reservation']);
       }
       );
-
+        
     }
+        
+        
+
 
     public onUpdate():void{
       
@@ -93,10 +109,45 @@ export class EditarReservationComponent implements OnInit {
         }
 
       );
+    }
+
+    public formatoFecha(fecha:any):any{
+      return moment(fecha).format("YYYY-MM-DD");
+
+     }
+
+
+     public listIdClients():void{
+      this.reservationService.listClientForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listClient[indice] = res[i].idClient;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
+    public listIdCostumesId():void{
+      this.reservationService.listCostumeForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listCostume[indice] = res[i].id;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      } 
     
+    }
         
 
 
-    }
 
-}

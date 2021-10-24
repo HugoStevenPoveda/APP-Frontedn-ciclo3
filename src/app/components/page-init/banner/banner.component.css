@@ -1,0 +1,9 @@
+header {
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.8855917366946778) 10%,
+    rgba(52, 195, 210, 0.835171568627451) 67%,
+    rgba(0, 0, 0, 1) 98%
+  );
+}

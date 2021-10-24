@@ -1,4 +1,4 @@
-<div class="container" *ngIf="reservation">
+<div class="container animated fadeIn" *ngIf="reservation">
     <div class="row mt-5">
       <div class="col-md-4 mx-auto">
         <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
@@ -24,29 +24,53 @@
               required
             />
           </div>
-          <div class="form-group">
-            <label for="costume">Costume</label>
-            <input
-              type="text"
-              class="form-control"
-              id="costume"
-              name="costume"
-              [(ngModel)]="reservation.costume.id"
-              required
-            />
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Costume</label
+              >
+  
+              <select
+                class="custom-select"
+                id="inputGroupSelect01"
+                [(ngModel)]="reservation.costume.id"
+                name="costume"
+                required
+              >
+              <option selected>{{reservation.costume.id}}</option>
+                <option
+                  [value]="costumeId"
+                  *ngFor="let costumeId of listCostume"
+                >
+                  {{costumeId }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Client</label
+              >
+  
+              <select
+                class="custom-select"
+                id="inputGroupSelect01"
+                [(ngModel)]="reservation.client.idClient"
+                name="client"
+                required
+              >
+              <option selected>{{reservation.client.idClient}}</option>
+                <option
+                  [value]="clientId"
+                  *ngFor="let clientId of listClient"
+                >
+                  {{ clientId }}
+                </option>
+              </select>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="client">Client</label>
-            <input
-              type="text"
-              class="form-control"
-              id="client"
-              name="client"
-              [(ngModel)]="reservation.client.idClient"
-              required
-            />
-          </div>
   
          
           <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">

@@ -43,6 +43,10 @@ import { ListaScoreComponent } from 'src/app/components/score/lista-score/lista-
 import { AgregarScoreComponent } from 'src/app/components/score/agregar-score/agregar-score.component';
 import { NavComponent } from 'src/app/components/nav/nav.component';
 import { PageInitComponent } from 'src/app/components/page-init/page-init.component';
+import { BannerComponent } from './components/page-init/banner/banner.component';
+import { FooterComponent } from './components/page-init/footer/footer.component';
+import { CardCostumeComponent } from './components/page-init/card-costume/card-costume.component';
+import { CarruselComponent } from './components/page-init/carrusel/carrusel.component';
 
 
 
@@ -79,7 +83,11 @@ import { PageInitComponent } from 'src/app/components/page-init/page-init.compon
     ListaScoreComponent,
     AgregarScoreComponent,
     NavComponent,
-    PageInitComponent
+    PageInitComponent,
+    BannerComponent,
+    FooterComponent,
+    CardCostumeComponent,
+    CarruselComponent
 
    
     

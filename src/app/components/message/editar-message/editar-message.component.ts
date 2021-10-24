@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService } from 'src/app/services/message.service';
 import {Message} from 'src/app/models/message';
-import { Costume } from 'src/app/models/costume';
-import { Client } from 'src/app/models/client';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -19,10 +17,16 @@ export class EditarMessageComponent implements OnInit {
    //ATRIBUTOS
    message:Message={
     "messageText":" ",
-    "costume":new Costume(" "," ",0," ",0),
-    "client":new Client(" ",0," ","")
+    "costume":{"id":1},
+    "client":{"idClient":1}
 
   }
+
+   //ARRAY FOR CLIENT
+   listClient:any[]=[];
+   //ARRAY FOR CLIENT
+   listCostume:any[]=[];
+ 
 
   //CONSTRUCTOR
   constructor(
@@ -38,8 +42,10 @@ export class EditarMessageComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.getElementForId(id);
+    this.listIdCostumesId();
+    this.listIdClients();
 
-    console.log(this.message);
+    
   }
    
   public getElementForId(id:any):void{
@@ -61,7 +67,6 @@ export class EditarMessageComponent implements OnInit {
     }
 
     public onUpdate():void{
-      console.log(this.message);
 
       this.messageService.updateElement(this.message).subscribe(
         data=>{
@@ -89,6 +94,35 @@ export class EditarMessageComponent implements OnInit {
 
 
     }
+
+    public listIdClients():void{
+      this.messageService.listClientForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listClient[indice] = res[i].idClient;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
+    public listIdCostumesId():void{
+      this.messageService.listCostumeForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listCostume[indice] = res[i].id;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      } 
 
   
   

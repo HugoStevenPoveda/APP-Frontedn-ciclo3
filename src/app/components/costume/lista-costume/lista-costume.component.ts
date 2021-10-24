@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ListaCostumeComponent implements OnInit {
 
   costumes:Costume[]=[];
+  
 
   constructor(
       private costumeService:CostumeService,
@@ -57,6 +58,8 @@ public delete(id:any){
         })})
 
       }
+
+    
 
 
 

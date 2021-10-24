@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import{Reservation}from'src/app/models/reservation';
 import{ReservationService}from'src/app/services/reservation.service';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
 
+moment.locale('es');
 @Component({
   selector: 'app-lista-reservation',
   templateUrl: './lista-reservation.component.html',
@@ -12,16 +14,27 @@ import { ToastrService } from 'ngx-toastr';
 export class ListaReservationComponent implements OnInit {
 
   reservations:Reservation[]=[];
+  hoy:any;
 
   constructor(
     private reservationService:ReservationService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    
 
-  ) { }
+  ) {
+
+    this.hoy=moment(); 
+   }
 
  
   ngOnInit(): void {
     this.listAll();
+    console.log("/// fecha--moment")
+    console.log(this.hoy.format('YYYY-MM-DD'));
+    console.log(this.hoy.format("MMMM D, YYYY"));
+    console.log(this.hoy.format("dddd Do MMM YYYY"));
+    console.log("/// FECHA FORMATO")
+    console.log(moment("2021-10-26T05:00:00.000+00:00").format("MMMM D, YYYY"));
   }
 
   public listAll():void{
@@ -58,4 +71,12 @@ public delete(id:any){
 
       }
 
+      public formatoFecha(fecha:any):any{
+       return moment(fecha).format("D MMMM YYYY");
+
+      }
+
+
 }
+
+

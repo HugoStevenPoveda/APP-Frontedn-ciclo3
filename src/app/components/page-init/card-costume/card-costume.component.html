@@ -1,0 +1,30 @@
+
+<section>
+    
+      <div  class="card  mb-3 margenCard" style="max-width: 18rem;" *ngFor="let costume of costumes">
+          <div class="card-header  text-center headerFondo">
+            {{costume.name}}</div>
+          <div class="card-body align-items-center text-center">
+            <h5 class="card-title "> 
+                <b class="text-dark">Category: </b>
+                {{costume.category.name}}
+            </h5>
+
+            <p class="card-text ">
+                <b class="text-dark text1">Descripción: </b>
+                {{costume.description}}
+            </p>
+            <div class="star mt-3 align-items-center">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+    
+    
+</section> 
+
+

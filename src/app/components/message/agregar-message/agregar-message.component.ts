@@ -17,6 +17,11 @@ export class AgregarMessageComponent implements OnInit {
   client=0;
   costume=0;
 
+  //ARRAY FOR CLIENT
+  listClient:any[]=[];
+  //ARRAY FOR CLIENT
+  listCostume:any[]=[];
+
  //COSNTRUCTOR
   constructor(
     private messageService:MessageService,
@@ -25,14 +30,16 @@ export class AgregarMessageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listIdCostumesId();
+    this.listIdClients();
   }
 
   public onCreate():void{
 
     const message:Message={
      "messageText":this.messageText,
-     "client":{"idClient":this.client},
-     "costume":{"id":this.costume}
+     "client":{"idClient":this.listClient[this.client]},
+     "costume":{"id":this.listCostume[this.costume]}
    }
    
 
@@ -57,6 +64,37 @@ export class AgregarMessageComponent implements OnInit {
       )
 
     }
+
+    public listIdClients():void{
+      this.messageService.listClientForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listClient[indice] = res[i].idClient;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
+    public listIdCostumesId():void{
+      this.messageService.listCostumeForId().subscribe(
+        res=>{
+          let indice =0;
+          for(let i in res){
+            this.listCostume[indice] = res[i].id;
+            indice++;
+          }
+        },
+        err=>{
+          console.log(err);
+        }
+        );
+      }  
+
+
 
 
 
